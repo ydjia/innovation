@@ -9,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  
 import innovation.model.User;
 import innovation.service.UserService;
+import innovation.service.impl.UserServiceImpl;
  
  
  
@@ -21,7 +22,7 @@ private UserService userService;
     public void before(){                                                                   
         @SuppressWarnings("resource")
         ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"classpath:conf/spring.xml"
-                ,"classpath:conf/spring-mybatis.xml","classpath:conf/test1.xml","classpath:conf/spring-mvc.xml"});
+                ,"classpath:conf/spring-mybatis.xml","classpath:conf/test1.xml"});
         //ApplicationContext context = new ClassPathXmlApplicationContext("classpath:conf/test1.xml");
         
         userService = (UserService) context.getBean("userServiceImpl");
@@ -32,8 +33,9 @@ private UserService userService;
     @Test
     public void addUser(){
         User user = new User();
-        
-        user = userService.login("123456", "123456");
+        user.setName("123456");
+        user.setPassword("123456");
+        user = userService.login(user);
         JSONObject json_user = JSONObject.fromObject(user);
         System.out.println(json_user.toString());
        // System.out.println(userService.save(user));

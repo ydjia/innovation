@@ -46,9 +46,9 @@ public class UserServiceImpl implements UserService{
 		else return true;
 	}
 
-	public User login(String name, String password) {
-		User user=userDAO.query(name);
-		if(!password.equals(user.getPassword()))user.setUid(0);
+	public User login(User user) {
+		User user2=userDAO.query(user.getName());
+		if(!user.getPassword().equals(user2.getPassword()))user.setUid(0);
 		return user;
 	}
  
