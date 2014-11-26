@@ -70,8 +70,8 @@ public class UserAction extends ActionSupport{
 	    if (user1.getUid() != 0) {  
 	        return SUCCESS;  
 	    }else{
-	    	//this.addFieldError("user.username", "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ï¿½!"); 
-	    	//å¾…å®Œå–„ï¼Œç›®å‰å¦‚æœåªè¾“å…¥å¯†ç ä¼šæŠ¥é”™ã€‚
+	    	//this.addFieldError("user.username", "ÓÃ»§Ãû»òÃÜÂë´íÎó¯¯!"); 
+	    	//´ıÍêÉÆ£¬Ä¿Ç°Èç¹ûÖ»ÊäÈëÃÜÂë»á±¨´í¡£
 	    	return ERROR;
 	    }	    		
     } 
