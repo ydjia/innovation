@@ -4,6 +4,11 @@
 -->
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+
+  	<listener>
+	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
      <!-- 读取spring配置文件 -->
 	<context-param>
 	    <param-name>contextConfigLocation</param-name>
@@ -16,7 +21,21 @@
 	    <param-name>webAppRootKey</param-name>
 	    <param-value>innovation.root</param-value>
 	</context-param>
-
+	
+	<!-- 配置struts2 -->  
+    <filter>  
+        <filter-name>struts2</filter-name>  
+        <filter-class>  
+            org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>  
+        <!-- <init-param>   
+   			<param-name>config</param-name>   
+   			<param-value>classpath:conf/struts.xml</param-value>   
+		</init-param>  -->
+    </filter>  
+    <filter-mapping>  
+        <filter-name>struts2</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping>  
 
 	<!-- Spring字符集过滤器 -->
 	<filter>
@@ -51,6 +70,7 @@
 	    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
 
+<<<<<<< HEAD
 	<listener>
 	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -68,6 +88,10 @@
 	
     <!-- springMVC核心配置 ,前端控制器-->
 	 <servlet>
+=======
+	 <!-- springMVC核心配置 -->
+	<!--<servlet>
+>>>>>>> parent of 67e51a1... Revert "bug fix"
 	    <servlet-name>spring</servlet-name>
 	    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	    <init-param>
@@ -79,7 +103,11 @@
 	<servlet-mapping>
 	    <servlet-name>spring</servlet-name>
 	    <url-pattern>*.do</url-pattern>
+<<<<<<< HEAD
 	</servlet-mapping>  
+=======
+	</servlet-mapping> -->
+>>>>>>> parent of 67e51a1... Revert "bug fix"
 
 	<welcome-file-list>
 	    <welcome-file>index.html</welcome-file>

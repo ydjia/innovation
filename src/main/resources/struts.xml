@@ -13,7 +13,7 @@
     <action name="loginview" class="">
       <result>/WEB-INF/pages/login.html</result>
     </action> 
-    <action name="userlogin" class="UserController" method="dologin">
+    <action name="userlogin" class="UserAction" method="dologin">
       <result name="success">/success.jsp</result>
       <result name="error">/WEB-INF/pages/login.html</result>
       <result name="userList">/userList.jsp</result>
@@ -24,7 +24,7 @@
     <action name="register" class="">
       <result>/WEB-INF/pages/register.html</result>
     </action>
-    <action name="userRegister" class="UserController" method="doregister">
+    <action name="userRegister" class="UserAction" method="doregister">
       <result name="registered">/WEB-INF/pages/login.html</result>
       <result name="error">//WEB-INF/pages/register.html</result>
     </action>

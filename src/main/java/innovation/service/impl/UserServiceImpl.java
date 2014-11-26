@@ -56,7 +56,12 @@ public class UserServiceImpl implements UserService{
 
 	public User login(User user) {
 		User user2=userDAO.query(user.getName());
+<<<<<<< HEAD
 		if(!user.getPassword().equals(user2.getPassword()))user2.setUid(0);
 		return user2;
+=======
+		if(!user.getPassword().equals(user2.getPassword()))user.setUid(0);
+		return user;
+>>>>>>> parent of 67e51a1... Revert "bug fix"
 	}
 }
