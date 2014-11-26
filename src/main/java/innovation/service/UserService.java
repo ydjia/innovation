@@ -20,10 +20,9 @@ public interface UserService {
 	
 	public boolean ValidateName(String name);
 	
-<<<<<<< HEAD
+
 	public boolean register(User user);
 	
-=======
->>>>>>> parent of 67e51a1... Revert "bug fix"
+
 	public User login(User user);
 }
