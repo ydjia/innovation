@@ -2,18 +2,12 @@ package innovation.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -26,21 +20,32 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+
 import innovation.utils.UserFormValidator;
 import innovation.model.User;
 import innovation.service.UserService;
+import innovation.service.impl.UserServiceImpl;
 
 @Controller
-@SessionAttributes("currentUser")
-public class UserController {
+@Scope("prototype")
+public class UserController extends ActionSupport{
 
-	private Logger logger = LoggerFactory.getLogger(UserController.class);
-	
+	//private Logger logger = LoggerFactory.getLogger(UserController.class);
+
+	//private UserService userService;
 	@Autowired
-	private UserService userService;
+	UserService us = new UserServiceImpl();
 	
-	@Autowired
 	private UserFormValidator validator;
+	
+	@Autowired
+	private UserService userService;  
+	private User user;	
+	private String password;	
+	private String name;	
+	private int tid;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -48,63 +53,67 @@ public class UserController {
 		dateFormat.setLenient(false);
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
 				dateFormat, true));
-	}
-	@ModelAttribute("currentUser")
-	public User getUser() {
-		User user = new User();
-		return user;
-	}
+	}	
 	/*@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView loginForm(@ModelAttribute("login") User user) {
-		System.out.println("login");
-		ModelAndView mav = new ModelAndView("login");
-		mav.addObject("login", user);
-		return mav;
-	}*/
-	/*涓轰簡鍑忓皯鍓嶇楹荤儲锛屽叏閮ㄤ娇鐢╤tml浠ュ強json*/
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginForm() {
 		return "login";
+	}*/
+	public String execute() throws Exception{
+		return null;
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	@ResponseBody
-	public Map<String,String> login(
-			@RequestParam(required = true, defaultValue = "") String name,
-			@RequestParam(required = true, defaultValue = "") String password,
-			@ModelAttribute("currentUser") User user, BindingResult result,
-			SessionStatus status,HttpServletResponse response) { 
-		validator.loginValidate(user, result);
-		HashMap<String,String> hm = new HashMap<String,String>();
-		if (result.hasErrors()) {
-
-			hm.put("status", "1");
-			hm.put("code", result.getFieldError().getCode());
-			hm.put("message",result.getFieldError().getDefaultMessage());
-		} else {
-			if (userService.ValidateName(name)) {
-				user = userService.login(name, password);
-				if (user.getUid()!=0) {
-					logger.debug("{} login sucesss!",user.getUid());
-					JSONObject json_user = JSONObject.fromObject(user);
-					hm.put("status", "0");
-					hm.put("message", "login sucess");
-					hm.put("data", json_user.toString());
-					response.addCookie(new Cookie("username",user.getName()));
-					response.addCookie(new Cookie("user",json_user.toString()));
-				} else {
-					hm.put("status", "2");
-					hm.put("message", "Password is Error!");
-				}
-			} else {
-				hm.put("status", "3");
-				hm.put("message", "Name Does not exist.");
-			}
+	public String dologin() throws Exception {  
+	    User user = new User();
+	    user.setName(name);
+	    user.setPassword(password);
+	    User user1 = userService.login(user);  
+	    if (user1.getUid() != 0) {  
+	        return SUCCESS;  
+	    }else{
+	    	this.addFieldError("user.username", "用户名或密码错误!"); 
+	    	//待完善，目前输入出现格式错误后会报错。
+	    	return ERROR;
+	    }	    		
+    } 
+	  
+	public String doregister() throws Exception {
+		//String name = getName();  
+	    //String password = getPassword();  
+	    //System.out.println(userName+"----"+passWord); 
+	    User user=new User();  
+	    user.setName(name);  
+	    user.setPassword(password);  
+	    user.setTid(tid);
+		if(us.register(user)){
+			return "registered";
+		}else{
+			return "error";
 		}
-		return hm;
 	}
 	
-	
-	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}  
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getTid() {
+		return tid;
+	}
+	public void setTid(int tid) {
+		this.tid = tid;
+	}
 }
 
