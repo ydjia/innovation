@@ -9,16 +9,30 @@
       <!-- 开发模式下打印详细的错误信息 -->
   <constant name="struts.ui.theme" value="xhtml"/>
   
-  <package name="user" namespace="/test" extends="struts-default">
-    <action name="aa" class="innovation.action.UserAction">
-      <result>web.xml</result>
-    </action>
-    <action name="user_*" class="innovation.action.UserAction" method="{1}">
-      <result name="success" type="redirectAction">user_queryAllUser.action</result>
-      <result name="input">/WEB-INF/pages/login.html</result>
+  <package name="user" namespace="" extends="struts-default">
+    <action name="loginview" class="">
+      <result>/WEB-INF/pages/login.html</result>
+    </action> 
+    <action name="userlogin" class="UserController" method="dologin">
+      <result name="success">/success.jsp</result>
+      <result name="error">/WEB-INF/pages/login.html</result>
       <result name="userList">/userList.jsp</result>
       <result name="addUser">/userAdd.jsp</result>
       <result name="updateUser">/userUpdate.jsp</result>
+    </action>
+    
+    <action name="register" class="">
+      <result>/WEB-INF/pages/register.html</result>
+    </action>
+    <action name="userRegister" class="UserController" method="doregister">
+      <result name="registered">/WEB-INF/pages/login.html</result>
+      <result name="error">//WEB-INF/pages/register.html</result>
+    </action>
+  </package>
+  
+  <package name="test" namespace="" extends="struts-default">
+    <action name="test" class="FirstAction">
+      <result>/success.jsp</result>
     </action>
   </package>
 </struts>    
