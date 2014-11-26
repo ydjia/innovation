@@ -25,6 +25,7 @@ public interface UserDAO {
 	public void delete(int id);
 	
 	public int checkNameValidate(String name);
-     
+
+	public void insert(User user);
      
 }

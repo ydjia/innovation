@@ -20,5 +20,7 @@ public interface UserService {
 	
 	public boolean ValidateName(String name);
 	
-	public User login(String Name,String password);
+	public boolean register(User user);
+	
+	public User login(User user);
 }

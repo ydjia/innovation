@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
  
+
+
 import innovation.dao.UserDAO;
 import innovation.model.User;
 import innovation.service.UserService;
@@ -45,11 +47,16 @@ public class UserServiceImpl implements UserService{
 			return false;
 		else return true;
 	}
-
-	public User login(String name, String password) {
-		User user=userDAO.query(name);
-		if(!password.equals(user.getPassword()))user.setUid(0);
-		return user;
+	
+	public boolean register(User user){
+		//User user1 = null;
+		userDAO.insert(user);		
+		return true;
 	}
- 
+
+	public User login(User user) {
+		User user2=userDAO.query(user.getName());
+		if(!user.getPassword().equals(user2.getPassword()))user2.setUid(0);
+		return user2;
+	}
 }

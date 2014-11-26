@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Work check</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+</head>
+<body style="font-family: Arial; font-size:smaller;" >
+    <form action="check.do" method="post" commandName="check" modelAttribute="check">
+    	 <table bgcolor="lightblue" align="center" style="border-collapse: collapse;" border="0" bordercolor="#006699" width="450">
+    	<tr><td colspan="3" align="center">check</td></tr>
+    	<tr>
+             <td width="100" align="right">Team ID</td>
+             <td width="150">
+             <input type="text" name="tid" cssStyle="width:150; height:20"/></td>
+         </tr>
+         <tr>
+             <td colspan="2" align="right">             
+                   <input type="submit" name="" value="check">
+             </td>
+             <td></td>
+         </tr>
+    	</table>
+    </form>
+      <form action="updatefile.do" method="post" commandName="updatefile" modelAttribute="updatefile">
+    	 <table bgcolor="lightblue" align="center" style="border-collapse: collapse;" border="0" bordercolor="#006699" width="450">
+    	<tr><td colspan="3" align="center">update_file</td></tr>
+    	<tr>
+             <td width="100" align="right">work ID</td>
+             <td width="150">
+             <input type="text" name="wid" cssStyle="width:150; height:20"/></td>
+         </tr>
+         <tr>
+             <td width="100" align="right">New Wname</td>
+             <td width="150">
+             <input type="text" name="wname" cssStyle="width:150; height:20"/></td>
+         </tr>
+         <tr>
+             <td width="100" align="right">New Wintro</td>
+             <td width="150">
+             <input type="text" name="wintro" cssStyle="width:150; height:20"/></td>
+         </tr>
+         <tr>
+             <td colspan="2" align="right">             
+                   <input type="submit" name="" value="updatefile">
+             </td>
+             <td></td>
+         </tr>
+    	</table>
+    </form> 
+  </body>
+</html>
