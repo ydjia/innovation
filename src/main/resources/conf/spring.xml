@@ -7,7 +7,7 @@
       http://www.springframework.org/schema/context
       http://www.springframework.org/schema/context/spring-context.xsd">
  
-<<<<<<< HEAD
+
     <!-- 引入jdbc配置文件 -->
     <context:property-placeholder location="classpath:conf/jdbc.properties"/>
      
@@ -20,7 +20,5 @@
     <bean id="FirstAction" class="innovation.test.FirstAction"></bean> 
     <bean id="UserAction" class="innovation.action.UserAction"></bean>
      
-=======
-    
->>>>>>> parent of 67e51a1... Revert "bug fix"
+
 </beans>
