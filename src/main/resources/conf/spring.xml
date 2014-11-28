@@ -18,5 +18,5 @@
 
     <bean id="FirstAction" class="innovation.test.FirstAction"></bean> 
     <bean id="UserAction" class="innovation.action.UserAction"></bean>
-     
+    <bean id="WorkAction" class="innovation.action.WorkAction"></bean>
 </beans>

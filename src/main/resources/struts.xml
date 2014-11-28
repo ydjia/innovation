@@ -30,6 +30,19 @@
     </action>
   </package>
   
+  <package name="work" namespace="" extends="struts-default">
+    <action name="checkview" class="">
+      <result>/WEB-INF/pages/check.html</result>
+    </action>
+  	<action name="workcheck" class="WorkAction" method="check">
+  	  <result name="success">/success.jsp</result>
+  	</action>
+  	<action name="workupdate" class="WorkAction" method="workupdate">
+  	  <result name="success">/workUpdate.jsp</result>
+  	  <result name="error">/WEB-INF/pages/check.html</result>
+  	</action>
+  </package>
+  
   <package name="test" namespace="" extends="struts-default">
     <action name="test" class="FirstAction">
       <result>/success.jsp</result>

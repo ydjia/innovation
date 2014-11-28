@@ -17,9 +17,9 @@
          </select>
          
          <update id="updatework" parameterType="Work">
-         	update works set
-         		<if test="wname!=null">wname=#{wname},</if>
-         		<if test="wintro!=null">wintro=#{wintro},</if>
+         	update works 
+         		set wname=#{wname},
+         		    wintro=#{wintro},
          	where wid=#{wid};
          </update>               
 
