@@ -6,6 +6,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         <!-- 命名空间 -->
     <typeAliases>
          <typeAlias alias="User" type="innovation.model.User"/>
+         <typeAlias alias="Work" type="innovation.model.Work"/>
     </typeAliases>
  
     <!-- 映射map -->

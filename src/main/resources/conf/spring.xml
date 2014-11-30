@@ -17,6 +17,6 @@
     <context:component-scan base-package="innovation"></context:component-scan>
 
 
-    <bean id="UserAction" class="innovation.action.UserAction"></bean>
-    <bean id="WorkAction" class="innovation.action.WorkAction"></bean>
+<!--     <bean id="UserAction" class="innovation.action.UserAction"></bean>
+    <bean id="WorkAction" class="innovation.action.WorkAction"></bean> -->
 </beans>

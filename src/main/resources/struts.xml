@@ -13,7 +13,7 @@
     <action name="loginview" class="">
       <result>/WEB-INF/pages/login.html</result>
     </action> 
-    <action name="userlogin" class="UserAction" method="dologin">
+    <action name="userlogin" class="userAction" method="dologin">
       <result name="success">/success.jsp</result>
       <result name="error">/WEB-INF/pages/login.html</result>
       <result name="userList">/userList.jsp</result>
@@ -24,7 +24,7 @@
     <action name="register" class="">
       <result>/WEB-INF/pages/register.html</result>
     </action>
-    <action name="userRegister" class="UserAction" method="doregister">
+    <action name="userRegister" class="userAction" method="doregister">
       <result name="registered">/WEB-INF/pages/login.html</result>
       <result name="error">//WEB-INF/pages/register.html</result>
     </action>
@@ -34,10 +34,10 @@
     <action name="checkview" class="">
       <result>/WEB-INF/pages/check.html</result>
     </action>
-  	<action name="workcheck" class="WorkAction" method="check">
+  	<action name="workcheck" class="workAction" method="check">
   	  <result name="success">/success.jsp</result>
   	</action>
-  	<action name="workupdate" class="WorkAction" method="workupdate">
+  	<action name="workupdate" class="workAction" method="workupdate">
   	  <result name="success">/workUpdate.jsp</result>
   	  <result name="error">/WEB-INF/pages/check.html</result>
   	</action>
