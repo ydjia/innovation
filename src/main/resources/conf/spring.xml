@@ -16,8 +16,6 @@
     </context:component-scan>
     <context:component-scan base-package="innovation"></context:component-scan>
 
-    <bean id="FirstAction" class="innovation.test.FirstAction"></bean> 
-    <bean id="UserController" class="innovation.controller.UserController"></bean>
      
 
 </beans>
