@@ -2,6 +2,8 @@ package innovation.action;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,15 +12,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
+
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -38,7 +32,7 @@ public class UserAction extends ActionSupport{
 	@Autowired
 	UserService us = new UserServiceImpl();
 	
-	private UserFormValidator validator;
+	private Map<String, Object> dataMap;
 	
 	@Autowired
 	private UserService userService;  
@@ -47,13 +41,7 @@ public class UserAction extends ActionSupport{
 	private String name;	
 	private int tid;
 	
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		dateFormat.setLenient(false);
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(
-				dateFormat, true));
-	}	
+	
 	/*@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginForm() {
 		return "login";
@@ -66,12 +54,21 @@ public class UserAction extends ActionSupport{
 	    User user = new User();
 	    user.setName(name);
 	    user.setPassword(password);
+	    
+	    dataMap = new HashMap<String, Object>();
+	    //鎷︽埅閫昏緫
+	    if(name.equals("")){
+	    	dataMap.put("status","1003");
+	    	return ERROR;
+	    }else if(password.equals("")){
+	    	dataMap.put("status","1004");
+	    	return ERROR;
+	    }
 	    User user1 = userService.login(user);  
 	    if (user1.getUid() != 0) {  
 	        return SUCCESS;  
 	    }else{
-	    	//this.addFieldError("user.username", "用户名或密码错误!"); 
-	    	//待完善，目前如果只输入密码会报错。
+	    	dataMap.put("status","1002");
 	    	return ERROR;
 	    }	    		
     } 
@@ -114,6 +111,12 @@ public class UserAction extends ActionSupport{
 	}
 	public void setTid(int tid) {
 		this.tid = tid;
+	}
+	public Map<String,Object> getDataMap() {
+		return dataMap;
+	}
+	public void setDataMap(Map<String,Object> hm) {
+		this.dataMap = hm;
 	}
 }
 
