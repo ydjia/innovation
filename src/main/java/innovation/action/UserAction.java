@@ -65,12 +65,18 @@ public class UserAction extends ActionSupport{
 	    	return ERROR;
 	    }
 	    User user1 = userService.login(user);  
-	    if (user1.getUid() != 0) {  
-	        return SUCCESS;  
-	    }else{
-	    	dataMap.put("status","1002");
+	    if(user1==null){
+	    	dataMap.put("status","1001");          //username is not exist
 	    	return ERROR;
-	    }	    		
+	    }else{
+	    	if (user1.getUid() != 0) {  
+		        return SUCCESS;  
+		    }else{
+		    	dataMap.put("status", "1002");     //password is error
+		    	return ERROR;
+		    }	    		
+	    }
+	    
     } 
 	  
 	public String doregister() throws Exception {

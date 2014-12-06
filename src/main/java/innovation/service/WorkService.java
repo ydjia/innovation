@@ -18,7 +18,7 @@ public int save(Work work);
 	
 	public boolean ValidateWid(int wid);
 
-	public Work check(int tid);
+	public Work query(int tid);
 	
 	public Work fileupdate(Work work);
 	

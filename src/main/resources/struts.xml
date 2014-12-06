@@ -32,12 +32,17 @@
     </action>
   </package>
   
-  <package name="work" namespace="" extends="struts-default">
+  <package name="work" namespace="" extends="struts-default,json-default">
     <action name="checkview" class="">
       <result>/WEB-INF/pages/check.html</result>
     </action>
   	<action name="workcheck" class="workAction" method="check">
-  	  <result name="success">/success.jsp</result>
+  	  <result name="success" type="json">
+  	     <param name="root">dataMap</param>
+  	  </result>
+  	  <result name="error" type="json">
+         <param name="root">dataMap</param>
+      </result>
   	</action>
   	<action name="workupdate" class="workAction" method="workupdate">
   	  <result name="success">/workUpdate.jsp</result>

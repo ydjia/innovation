@@ -48,7 +48,7 @@ public class WorkServiceImpl implements WorkService {
 		return work;	
 	}
 
-	public Work check(int tid) {                      //作品查看
+	public Work query(int tid) {                      //作品查看
 		// TODO Auto-generated method stub
 		System.out.println(tid);
 		Work work= new Work(); 

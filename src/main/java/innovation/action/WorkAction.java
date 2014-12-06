@@ -6,18 +6,11 @@ import innovation.service.WorkService;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -34,7 +27,7 @@ public class WorkAction extends ActionSupport {
 	private String wname;
 	private String wintro;
 	
-
+	private Map<String,Object> dataMap;
 
 	public String execute() throws Exception{
 		return null;
@@ -43,10 +36,13 @@ public class WorkAction extends ActionSupport {
 	public String check() throws Exception{
 		//Work work = new Work();
 		//work.setTid(tid);
-		Work work = workService.check(tid);
+		dataMap = new HashMap<String,Object>();
+		Work work = workService.query(tid);
 		if(work.getWid()==0){
+			dataMap.put("status", "1001");      //work is not exist
 			return ERROR;
 		}else{
+			dataMap.put("work info", work);
 			return SUCCESS;
 		}
 	}
@@ -97,5 +93,13 @@ public class WorkAction extends ActionSupport {
 
 	public void setWintro(String wintro) {
 		this.wintro = wintro;
+	}
+	
+	public Map<String, Object> getDataMap() {
+		return dataMap;
+	}
+
+	public void setDataMap(Map<String, Object> dataMap) {
+		this.dataMap = dataMap;
 	}
 }
