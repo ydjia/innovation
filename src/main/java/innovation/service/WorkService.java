@@ -20,6 +20,10 @@ public int save(Work work);
 
 	public Work query(int tid);
 	
+	public Work query1(int teachid1);
+	
+	public Work query2(int teachid2);
+	
 	public Work fileupdate(Work work);
 	
 	public Work fileupload(int tid);

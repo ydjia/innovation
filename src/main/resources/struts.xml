@@ -24,7 +24,7 @@
     </action>
     
     <action name="register" class="">
-      <result>/WEB-INF/pages/register.html</result>
+      <result>/WEB-INF/pages/regist.html</result>
     </action>
     <action name="userRegister" class="userAction" method="doregister">
       <result name="registered">/WEB-INF/pages/login.html</result>
@@ -37,6 +37,14 @@
       <result>/WEB-INF/pages/check.html</result>
     </action>
   	<action name="workcheck" class="workAction" method="check">
+  	  <result name="success" type="json">
+  	     <param name="root">dataMap</param>
+  	  </result>
+  	  <result name="error" type="json">
+         <param name="root">dataMap</param>
+      </result>
+  	</action>
+  	<action name="workcheckByteachid" class="workAction" method="checkByTeachid">
   	  <result name="success" type="json">
   	     <param name="root">dataMap</param>
   	  </result>

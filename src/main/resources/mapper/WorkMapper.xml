@@ -16,6 +16,14 @@
             select * from works where tid=#{tid}
          </select>
          
+         <select id="query1" resultType="Work">
+            select * from works where teachid1=#{teachid1}
+         </select>
+         
+         <select id="query2" resultType="Work">
+            select * from works where teachid2=#{teachid2}
+         </select>
+         
          <update id="updatework" parameterType="Work">
          	update works 
          		set wname=#{wname},

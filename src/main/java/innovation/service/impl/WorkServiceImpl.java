@@ -43,12 +43,12 @@ public class WorkServiceImpl implements WorkService {
 		else return true;
 	}
 	
-	public Work fileupload(Work work){                //×÷Æ·ÉÏ´«
+	public Work fileupload(Work work){                //ï¿½ï¿½Æ·ï¿½Ï´ï¿½
 		workDAO.fileupload(work);
 		return work;	
 	}
 
-	public Work query(int tid) {                      //×÷Æ·²é¿´
+	public Work query(int tid) {                      //ï¿½ï¿½Æ·ï¿½é¿´
 		// TODO Auto-generated method stub
 		System.out.println(tid);
 		Work work= new Work(); 
@@ -61,7 +61,33 @@ public class WorkServiceImpl implements WorkService {
 		return work; 
 	}
 	
-	public Work fileupdate(Work work) {    //×÷Æ·ÐÅÏ¢¸ü¸Ä£¬°üÀ¨×÷Æ·ÃûºÍ×÷Æ·¼ò½é
+	public Work query1(int teachid1) {                      //ï¿½ï¿½Æ·ï¿½é¿´
+		// TODO Auto-generated method stub
+		System.out.println(teachid1);
+		Work work= new Work(); 
+		work = workDAO.query1(teachid1);
+		if(work==null){
+			System.out.println("work is null");
+			work=new Work();
+			work.setWid(0);
+		}
+		return work; 
+	}
+	
+	public Work query2(int teachid2) {                      //ï¿½ï¿½Æ·ï¿½é¿´
+		// TODO Auto-generated method stub
+		System.out.println(teachid2);
+		Work work= new Work(); 
+		work = workDAO.query1(teachid2);
+		if(work==null){
+			System.out.println("work is null");
+			work=new Work();
+			work.setWid(0);
+		}
+		return work; 
+	}
+	
+	public Work fileupdate(Work work) {    //ï¿½ï¿½Æ·ï¿½ï¿½Ï¢ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½
 		// TODO Auto-generated method stub
 		workDAO.updatework(work);	
 		//System.out.println(work.getWname());

@@ -214,3 +214,8 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+.classpath
+*.classpath
+.project
+src/main/resources/conf/jdbc.properties
+.classpath

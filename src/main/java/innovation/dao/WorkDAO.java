@@ -26,5 +26,9 @@ public interface WorkDAO {
 	public Work updatework(Work work);
 
 	public Work query(int tid);
+	
+	public Work query1(int teachid1);
+	
+	public Work query2(int teachid2);
 
 }
