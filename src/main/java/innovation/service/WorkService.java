@@ -1,5 +1,6 @@
 package innovation.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import innovation.model.Work;
@@ -17,14 +18,24 @@ public int save(Work work);
 	public List<Work> getAll();
 	
 	public boolean ValidateWid(int wid);
+	
+	public Work query3(int wid);
 
 	public Work query(int tid);
 	
-	public Work query1(int teachid1);
+	public List<HashMap<Integer, Object>> query0();
 	
-	public Work query2(int teachid2);
+	public List<HashMap<Integer, Object>> query1(int teachid1);
 	
-	public Work fileupdate(Work work);
+	public List<HashMap<Integer, Object>> query2(int teachid2);
+	
+	public void fileupdate(Work work);
+	
+	public void filedelete(Work work);
 	
 	public Work fileupload(int tid);
+
+	public void fileassign1(Work work);
+	
+	public void fileassign2(Work work);
 }

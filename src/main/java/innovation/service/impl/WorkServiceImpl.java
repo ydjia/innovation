@@ -1,6 +1,9 @@
 package innovation.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,55 +46,61 @@ public class WorkServiceImpl implements WorkService {
 		else return true;
 	}
 	
-	public Work fileupload(Work work){                //��Ʒ�ϴ�
+	public Work fileupload(Work work){               //作品上传
 		workDAO.fileupload(work);
 		return work;	
 	}
 
-	public Work query(int tid) {                      //��Ʒ�鿴
+	public Work query3(int wid) {                     //作品查询
+		// TODO Auto-generated method stub
+		Work work= new Work(); 
+		work = workDAO.query3(wid);
+		if(work==null){
+			//System.out.println("work is null");
+			work=new Work();
+			work.setWid(0);
+		}
+		return work; 
+	}
+	
+	public Work query(int tid) {                     //作品查询
 		// TODO Auto-generated method stub
 		System.out.println(tid);
 		Work work= new Work(); 
 		work = workDAO.query(tid);
 		if(work==null){
-			System.out.println("work is null");
+			//System.out.println("work is null");
 			work=new Work();
 			work.setWid(0);
 		}
 		return work; 
 	}
 	
-	public Work query1(int teachid1) {                      //��Ʒ�鿴
-		// TODO Auto-generated method stub
-		System.out.println(teachid1);
-		Work work= new Work(); 
-		work = workDAO.query1(teachid1);
-		if(work==null){
-			System.out.println("work is null");
-			work=new Work();
-			work.setWid(0);
-		}
-		return work; 
+	public List<HashMap<Integer, Object>> query0() {                      
+		List<HashMap<Integer, Object>> list = new ArrayList<HashMap<Integer,Object>>();
+		//Work work= new Work(); 
+		list = workDAO.query0();
+		return list;
 	}
 	
-	public Work query2(int teachid2) {                      //��Ʒ�鿴
-		// TODO Auto-generated method stub
-		System.out.println(teachid2);
-		Work work= new Work(); 
-		work = workDAO.query1(teachid2);
-		if(work==null){
-			System.out.println("work is null");
-			work=new Work();
-			work.setWid(0);
-		}
-		return work; 
+	public List<HashMap<Integer, Object>> query1(int teachid1) {                      
+		List<HashMap<Integer, Object>> list = new ArrayList<HashMap<Integer,Object>>();
+		list = workDAO.query1(teachid1);
+		return list;
 	}
 	
-	public Work fileupdate(Work work) {    //��Ʒ��Ϣ��ģ�������Ʒ�����Ʒ���
-		// TODO Auto-generated method stub
+	public List<HashMap<Integer, Object>> query2(int teachid2) {                      
+		List<HashMap<Integer, Object>> list = new ArrayList<HashMap<Integer,Object>>();
+		list = workDAO.query2(teachid2);
+		return list;
+	}
+	
+	public void fileupdate(Work work) {            //作品更新
 		workDAO.updatework(work);	
-		//System.out.println(work.getWname());
-		return null;
+	}
+	
+	public void filedelete(Work work) {            //作品删除标示
+		workDAO.updatework2(work);	
 	}
 	
 	public Work fileupload(int tid) {
@@ -99,4 +108,10 @@ public class WorkServiceImpl implements WorkService {
 		return null;
 	}
 
+	public void fileassign1(Work work) {
+		workDAO.updatework3(work);
+	}
+	public void fileassign2(Work work) {
+		workDAO.updatework4(work);
+	}
 }

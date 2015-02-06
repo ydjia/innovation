@@ -58,9 +58,9 @@ public class UserAction extends ActionSupport{
 	    dataMap = new HashMap<String, Object>();
 	    //拦截逻辑
 	    if(name.equals("")){
-	    	dataMap.put("status","1003");
+	    	dataMap.put("status","1003");         //username is null
 	    	return ERROR;
-	    }else if(password.equals("")){
+	    }else if(password.equals("")){            //password is null
 	    	dataMap.put("status","1004");
 	    	return ERROR;
 	    }

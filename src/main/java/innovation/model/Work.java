@@ -16,8 +16,9 @@ public class Work implements Serializable {
     private int teachid2;
     private byte mark1;
     private byte mark2;
+    private byte noExist;
 
-    public int getWid(){
+	public int getWid(){
     	return wid;
     }
     public void setWid(int wid){
@@ -65,4 +66,10 @@ public class Work implements Serializable {
     public void setMark2(byte mark2){
     	this.mark2 = mark2;
     }
+    public byte getNoExist() {
+		return noExist;
+	}
+	public void setNoExist(byte noExist) {
+		this.noExist = noExist;
+	}
 }

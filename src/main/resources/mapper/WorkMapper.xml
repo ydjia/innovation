@@ -12,23 +12,44 @@
  		values(#{wid},#{tid},#{wname},#{wintro})  
 		</insert>  
 
+		 <select id="query3" resultType="Work">
+            select * from works where wid=#{wid}
+         </select>
+         
          <select id="query" resultType="Work">
             select * from works where tid=#{tid}
          </select>
          
-         <select id="query1" resultType="Work">
+          <select id="query0" parameterType="Integer" resultType="HashMap">
+            select * from works 
+         </select>
+         
+         <select id="query1" parameterType="Integer" resultType="HashMap">
             select * from works where teachid1=#{teachid1}
          </select>
          
-         <select id="query2" resultType="Work">
+         <select id="query2" parameterType="Integer" resultType="HashMap">
             select * from works where teachid2=#{teachid2}
          </select>
          
          <update id="updatework" parameterType="Work">
          	update works 
-         		set wname=#{wname},
-         		    wintro=#{wintro},
-         	where wid=#{wid};
+         		set wname=#{wname}
+         	where tid=#{tid};
          </update>               
-
+		 <update id="updatework2" parameterType="Work">
+         	update works 
+         		set noExist=1
+         	where wid=#{wid};
+         </update>  
+          <update id="updatework3" parameterType="Work">
+         	update works 
+         		set teachid1=#{teachid1}
+         	where wid=#{wid};
+         </update> 
+          <update id="updatework4" parameterType="Work">
+         	update works 
+         		set teachid2=#{teachid2}
+         	where wid=#{wid};
+         </update>   
 </mapper>

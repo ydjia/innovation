@@ -36,7 +36,15 @@
     <action name="checkview" class="">
       <result>/WEB-INF/pages/check.html</result>
     </action>
-  	<action name="workcheck" class="workAction" method="check">
+    <action name="workcheckbywid" class="workAction" method="checkByWid">
+  	  <result name="success" type="json">
+  	     <param name="root">dataMap</param>
+  	  </result>
+  	  <result name="error" type="json">
+         <param name="root">dataMap</param>
+      </result>
+  	</action>
+  	<action name="workcheckbytid" class="workAction" method="check">
   	  <result name="success" type="json">
   	     <param name="root">dataMap</param>
   	  </result>
@@ -52,9 +60,42 @@
          <param name="root">dataMap</param>
       </result>
   	</action>
+  	<action name="workcheckByadmin" class="workAction" method="checkByAdmin">
+  	  <result name="success" type="json">
+  	     <param name="root">dataMap</param>
+  	  </result>
+  	  <result name="error" type="json">
+         <param name="root">dataMap</param>
+      </result>
+  	</action>
   	<action name="workupdate" class="workAction" method="workupdate">
-  	  <result name="success">/workUpdate.jsp</result>
-  	  <result name="error">/WEB-INF/pages/check.html</result>
+  	  <result name="success" type="json">
+  		  <param name="root">dataMap</param>
+  	  </result>
+  	</action>
+  	<action name="workdelete" class="workAction" method="workdelete">
+  	  <result name="success" type="json">
+  	  	<param name="root">dataMap</param>
+  	  </result>
+  	  <result name="error" type="json">
+         <param name="root">dataMap</param>
+      </result>
+  	</action>
+  	<action name="workassign" class="workAction" method="workassign">
+  	  <result name="success" type="json">
+  	  	<param name="root">dataMap</param>
+  	  </result>
+  	  <result name="error" type="json">
+         <param name="root">dataMap</param>
+      </result>
+  	</action>
+  	<action name="workReAssign" class="workAction" method="workReAssign">
+  	  <result name="success" type="json">
+  	  	<param name="root">dataMap</param>
+  	  </result>
+  	  <result name="error" type="json">
+         <param name="root">dataMap</param>
+      </result>
   	</action>
   </package>
   

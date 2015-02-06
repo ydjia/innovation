@@ -13,7 +13,7 @@
 	-->
 </head>
 <body style="font-family: Arial; font-size:smaller;" >
-    <form action="workcheck" method="post" commandName="check" modelAttribute="check">
+    <form action="workcheckbytid" method="post" commandName="check" modelAttribute="check">
     	 <table bgcolor="lightblue" align="center" style="border-collapse: collapse;" border="0" bordercolor="#006699" width="450">
     	<tr><td colspan="3" align="center">check</td></tr>
     	<tr>
@@ -29,7 +29,23 @@
          </tr>
     	</table>
     </form>
-    <form action="workcheckByteachid" method="post" commandName="check" modelAttribute="check">
+     <form action="workcheckbywid" method="post" commandName="check" modelAttribute="check">
+    	 <table bgcolor="lightblue" align="center" style="border-collapse: collapse;" border="0" bordercolor="#006699" width="450">
+    	<tr><td colspan="3" align="center">check</td></tr>
+    	<tr>
+             <td width="100" align="right">Work ID</td>
+             <td width="150">
+             <input type="text" name="wid" cssStyle="width:150; height:20"/></td>
+         </tr>
+         <tr>
+             <td colspan="2" align="right">             
+                   <input type="submit" name="" value="check">
+             </td>
+             <td></td>
+         </tr>
+    	</table>
+    </form>
+    <form action="workcheckByteachid" method="post" commandName="checkByteachid" modelAttribute="checkByteachid">
     	 <table bgcolor="lightblue" align="center" style="border-collapse: collapse;" border="0" bordercolor="#006699" width="450">
     	<tr><td colspan="3" align="center">checkByteachid</td></tr>
     	<tr>
@@ -51,18 +67,18 @@
     	<tr>
              <td width="100" align="right">work ID</td>
              <td width="150">
-             <input type="text" name="wid" cssStyle="width:150; height:20"/></td>
+             <input type="text" name="tid" cssStyle="width:150; height:20"/></td>
          </tr>
          <tr>
              <td width="100" align="right">New Wname</td>
              <td width="150">
              <input type="text" name="wname" cssStyle="width:150; height:20"/></td>
          </tr>
-         <tr>
+        <!--  <tr>
              <td width="100" align="right">New Wintro</td>
              <td width="150">
              <input type="text" name="wintro" cssStyle="width:150; height:20"/></td>
-         </tr>
+         </tr> -->
          <tr>
              <td colspan="2" align="right">             
                    <input type="submit" name="" value="updatefile">
@@ -71,5 +87,42 @@
          </tr>
     	</table>
     </form> 
+    <form action="workdelete" method="post" commandName="workdelete" modelAttribute="workdelete">
+    	 <table bgcolor="lightblue" align="center" style="border-collapse: collapse;" border="0" bordercolor="#006699" width="450">
+    	<tr><td colspan="3" align="center">workdelete</td></tr>
+    	<tr>
+             <td width="100" align="right">Work ID</td>
+             <td width="150">
+             <input type="text" name="wid" cssStyle="width:150; height:20"/></td>
+         </tr>
+         <tr>
+             <td colspan="2" align="right">             
+             		<input type="submit" name="" value="workdelete">
+             </td>
+             <td></td>
+         </tr>
+    	</table>
+    </form>
+    <form action="workassign" method="post" commandName="workassign" modelAttribute="workassign">
+    	 <table bgcolor="lightblue" align="center" style="border-collapse: collapse;" border="0" bordercolor="#006699" width="450">
+    	<tr><td colspan="3" align="center">workassign</td></tr>
+    	<tr>
+             <td width="100" align="right">Work ID</td>
+             <td width="150">
+             <input type="text" name="wid" cssStyle="width:150; height:20"/></td>
+         </tr>
+         <tr>
+             <td width="100" align="right">Teacher ID</td>
+             <td width="150">
+             <input type="text" name="teachid" cssStyle="width:150; height:20"/></td>
+         </tr>
+         <tr>
+             <td colspan="2" align="right">             
+             		<input type="submit" name="" value="workdelete">
+             </td>
+             <td></td>
+         </tr>
+    	</table>
+    </form>
   </body>
 </html>

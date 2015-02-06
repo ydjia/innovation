@@ -1,5 +1,6 @@
 package innovation.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -23,12 +24,22 @@ public interface WorkDAO {
 	
 	public int checkWidValidate(int wid);
 
-	public Work updatework(Work work);
+	public void updatework(Work work);
+	
+	public void updatework2(Work work);
+	
+	public void updatework3(Work work);
+	
+	public void updatework4(Work work);
 
+	public Work query3(int wid);
+	
 	public Work query(int tid);
 	
-	public Work query1(int teachid1);
+	public List<HashMap<Integer, Object>> query0();
 	
-	public Work query2(int teachid2);
+	public List<HashMap<Integer, Object>> query1(int teachid1);
+	
+	public List<HashMap<Integer, Object>> query2(int teachid2);
 
 }
